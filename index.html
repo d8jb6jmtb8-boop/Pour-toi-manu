@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#650d2b">
+<title>Pour Manuella ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg,#260511,#710e32,#bd315d);
+    color: white;
+    font-family: 'Poppins',sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center,transparent,rgba(0,0,0,.25));
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 750px;
+    padding: 45px 20px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.script {
+    font-family: 'Great Vibes', cursive;
+    color: #ffd5e1;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px,12vw,85px);
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 43px;
+    font-weight: normal;
+    color: #ffd5e1;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.9;
+}
+
+.subtitle {
+    letter-spacing: 3px;
+    font-size: 11px;
+    margin: 15px 0 35px;
+    color: #ffdce6;
+}
+
+/* ENVELOPPE */
+
+#opening {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope {
+    font-size: 105px;
+    margin: 30px;
+    animation: heartbeat 2s infinite;
+    cursor: pointer;
+}
+
+.glass {
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.23);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 25px;
+    padding: 30px 24px;
+    box-shadow: 0 15px 50px rgba(0,0,0,.2);
+    margin-bottom: 28px;
+}
+
+/* BOUTONS */
+
+button {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 40px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+.primary {
+    background: linear-gradient(135deg,#ffd0dd,#ff9bb8);
+    color: #64112e;
+    font-weight: 600;
+    box-shadow: 0 5px 25px rgba(255,150,180,.3);
+}
+
+.secondary {
+    background: rgba(255,255,255,.15);
+    border: 1px solid white;
+    color: white;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* LETTRE */
+
+.letter {
+    text-align: left;
+    font-size: 14px;
+    line-height: 2.1;
+    font-weight: 300;
+}
+
+.letter p {
+    margin-bottom: 17px;
+}
+
+.signature {
+    font-family: 'Great Vibes',cursive;
+    text-align: right;
+    font-size: 36px;
+    color: #ffd0df;
+    margin-top: 25px;
+}
+
+/* SECTIONS */
+
+section {
+    margin-top: 45px;
+    animation: appear 1s ease;
+}
+
+.rose {
+    font-size: 55px;
+    margin: 15px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+#surprise {
+    margin-top: 30px;
+    line-height: 2;
+    animation: appear 1.5s;
+}
+
+/* FORMULAIRE */
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin: 20px 0 8px;
+    color: #ffe2eb;
+}
+
+input, select, textarea {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 13px;
+    padding: 15px;
+    background: rgba(255,255,255,.95);
+    color: #68132e;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #ffb5ca;
+    box-shadow: 0 0 0 3px rgba(255,180,200,.2);
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.submit {
+    width: 100%;
+    margin-top: 25px;
+    padding: 17px;
+}
+
+.note {
+    font-size: 11px;
+    opacity: .75;
+    text-align: center;
+    margin-top: 15px;
+}
+
+footer {
+    padding: 40px 10px;
+    font-size: 11px;
+    opacity: .7;
+}
+
+/* MUSIQUE */
+
+.music {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.4);
+    color: white;
+    padding: 12px 17px;
+    backdrop-filter: blur(10px);
+}
+
+.music.playing {
+    animation: heartbeat 2s infinite;
+}
+
+/* COEURS ET PETALES */
+
+.floating {
+    position: fixed;
+    top: -40px;
+    pointer-events: none;
+    z-index: 1;
+    animation: falling linear forwards;
+}
+
+@keyframes falling {
+    to {
+        transform: translateY(110vh) rotate(400deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%,100% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width:500px) {
+    .glass {
+        padding: 24px 17px;
+    }
+
+    .letter {
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 35px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIQUE -->
+<audio id="music" loop preload="auto">
+    <source src="musique.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music" id="musicButton" onclick="toggleMusic()">
+    🎵 Musique OFF
+</button>
+
+<div class="container">
+
+<!-- PAGE D'ACCUEIL -->
+
+<div id="opening">
+
+    <div class="rose">🌹</div>
+
+    <h1>Manuella...</h1>
+
+    <p class="subtitle">
+        AVANT DE TOURNER LA PAGE...
+    </p>
+
+    <p style="max-width:400px;font-size:14px;">
+        Accorde-moi quelques minutes.
+        J'ai quelque chose que je n'ai pas su te dire correctement.
+    </p>
+
+    <div class="envelope" onclick="openLetter()">
+        💌
+    </div>
+
+    <button class="primary" onclick="openLetter()">
+        Ouvrir ma lettre ❤️
+    </button>
+
+    <p class="note">Une petite lettre, écrite avec sincérité.</p>
+
+</div>
+
+<!-- LETTRE -->
+
+<div id="mainContent" class="hidden">
+
+    <div class="rose">🌹</div>
+
+    <h1>Pour toi, Manuella</h1>
+
+    <p class="subtitle">QUELQUES MOTS QUE JE TE DOIS ❤️</p>
+
+    <div class="glass">
+
+        <div class="letter">
+
+            <p>Ma Manuella,</p>
+
+            <p>
+            Je sais que tu ne méritais pas la façon dont je t'ai parlé.
+            </p>
+
+            <p>
+            Tu voulais simplement mon attention, tu voulais probablement sentir que je m'intéressais à toi et que tu avais ta place auprès de moi.
+            </p>
+
+            <p>
+            Et moi, au lieu de prendre le temps de t'écouter, j'ai choisi de mal te répondre. Je t'ai demandé de dégager, de foutre le camp, et honnêtement, je regrette profondément ces paroles.
+            </p>
+
+            <p>
+            Je ne vais pas chercher d'excuses pour justifier mon comportement. Même si j'étais énervé, cela ne me donnait absolument pas le droit de te manquer de respect.
+            </p>
+
+            <p>
+            Tu n'avais pas besoin de cette réaction de ma part. Tu méritais de l'attention, de la douceur et surtout de la considération.
+            </p>
+
+            <p>
+            Je suis désolé, Manuella.
+            </p>
+
+            <p>
+            Je ne veux pas que mon orgueil gâche quelque chose qui compte pour moi. Je préfère reconnaître mes torts plutôt que de faire semblant de ne rien ressentir.
+            </p>
+
+            <p>
+            J'aimerais vraiment qu'on puisse se voir aujourd'hui, si tu es disponible et si tu en as envie.
+            </p>
+
+            <p>
+            Pas pour nous disputer, pas pour chercher qui a raison ou qui a tort, mais simplement pour discuter tranquillement, t'écouter, te présenter mes excuses en face et essayer d'arranger les choses.
+            </p>
+
+            <p>
+            Je ne te demande pas d'oublier instantanément ce qui s'est passé.
+            </p>
+
+            <p>
+            Je te demande simplement de me laisser l'occasion de te montrer que je regrette.
+            </p>
+
+            <p><strong>Pardon Manuella. ❤️</strong></p>
+
+            <div class="signature">
+                Avec sincérité.
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PARDON -->
+
+    <section>
+
+        <h2>Est-ce que tu peux me pardonner ?</h2>
+
+        <div class="rose">🥺</div>
+
+        <div class="actions">
+
+            <button class="primary" onclick="forgive()">
+                Oui, je te pardonne ❤️
+            </button>
+
+            <button class="secondary" onclick="needTime()">
+                J'ai besoin de temps...
+            </button>
+
+        </div>
+
+        <div id="surprise" class="hidden">
+            <div class="rose">❤️🌹❤️</div>
+
+            <h2>Merci Manuella...</h2>
+
+            <p>
+                Merci d'avoir pris le temps de me lire.
+                Je ne veux pas te promettre la perfection,
+                mais je veux te montrer mes efforts.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- INVITATION -->
+
+    <section class="invitation">
+
+        <div class="rose">💌</div>
+
+        <h2>Et si on se voyait aujourd'hui ?</h2>
+
+        <div class="glass">
+
+            <p style="font-size:14px;line-height:2;">
+
+                Je ne voudrais pas que cette lettre soit simplement
+                un message sur un écran.
+
+                <br><br>
+
+                J'aimerais pouvoir te retrouver, te regarder dans les yeux,
+                discuter avec toi et surtout prendre le temps de t'écouter.
+
+                <br><br>
+
+                Alors, accepterais-tu de venir chez moi aujourd'hui,
+                si tu es disponible et si tu en as envie ?
+
+                <br><br>
+
+                J'aimerais qu'on prenne le temps de parler,
+                sans colère, sans orgueil et sans dispute.
+
+                Juste toi et moi.
+
+            </p>
+
+        </div>
+
+        <!-- FORMSPREE -->
+
+        <div class="glass">
+
+            <h2>Ta réponse ❤️</h2>
+
+            <p style="font-size:12px;text-align:center;">
+                J'aimerais savoir ce qui te conviendrait.
+            </p>
+
+            <form
+                id="dateForm"
+                action="https://formspree.io/f/xpqvkbyb"
+                method="POST"
+            >
+
+                <input type="hidden"
+                       name="_subject"
+                       value="Réponse de Manuella ❤️">
+
+                <label>Ton prénom</label>
+
+                <input
+                    type="text"
+                    name="prenom"
+                    value="Manuella"
+                    required
+                >
+
+                <label>Es-tu disponible aujourd'hui ?</label>
+
+                <select name="disponibilite" required>
+                    <option value="">Choisis une réponse</option>
+                    <option value="Oui, disponible">
+                        Oui, je suis disponible ❤️
+                    </option>
+                    <option value="Peut-être">
+                        Peut-être, je dois voir.
+                    </option>
+                    <option value="Non">
+                        Non, pas aujourd'hui.
+                    </option>
+                </select>
+
+                <label>Quelle date te conviendrait ?</label>
+
+                <input
+                    type="date"
+                    id="date"
+                    name="date_rendez_vous"
+                    required
+                >
+
+                <label>À quelle heure pourrais-tu venir ?</label>
+
+                <input
+                    type="time"
+                    name="heure"
+                >
+
+                <label>Comment souhaites-tu qu'on se retrouve ?</label>
+
+                <select name="rencontre" required>
+                    <option value="">Choisis une réponse</option>
+                    <option>Je viens directement chez toi</option>
+                    <option>Tu viens me chercher</option>
+                    <option>On se retrouve ailleurs</option>
+                    <option>Je préfère décider plus tard</option>
+                </select>
+
+                <label>
+                    As-tu quelque chose à me dire avant qu'on se retrouve ?
+                </label>
+
+                <textarea
+                    name="message"
+                    placeholder="Je t'écoute, Manuella..."
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="primary submit"
+                    id="submitButton"
+                >
+                    Envoyer ma réponse ❤️
+                </button>
+
+                <p class="note">
+                    Ta réponse sera envoyée en toute simplicité.
+                </p>
+
+            </form>
+
+            <div id="formSuccess" class="hidden"
+                 style="text-align:center;margin-top:25px;">
+
+                <div class="rose">💗</div>
+
+                <h2>Merci Manuella !</h2>
+
+                <p>
+                    Ta réponse a bien été envoyée.
+                    J'ai hâte de pouvoir discuter avec toi.
+                </p>
+
+            </div>
+
+            <div id="formError" class="hidden"
+                 style="text-align:center;margin-top:20px;">
+
+                <p>
+                    Une erreur est survenue.
+                    Réessaie dans quelques instants.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    Une lettre, un regret, un espoir... ❤️
+    <br><br>
+    Créé spécialement pour Manuella.
+</footer>
+
+</div>
+
+<script>
+
+/* MUSIQUE */
+
+const music = document.getElementById("music");
+const musicButton = document.getElementById("musicButton");
+
+let playing = false;
+
+function toggleMusic() {
+
+    if (playing) {
+
+        music.pause();
+        playing = false;
+        musicButton.textContent = "🎵 Musique OFF";
+        musicButton.classList.remove("playing");
+
+    } else {
+
+        music.play().then(() => {
+            playing = true;
+            musicButton.textContent = "🎵 Musique ON";
+            musicButton.classList.add("playing");
+        }).catch(() => {
+            alert("Impossible de lancer la musique. Vérifie le fichier musique.mp3.");
+        });
+
+    }
+
+}
+
+/* OUVERTURE DE LA LETTRE */
+
+function openLetter() {
+
+    document.getElementById("opening").classList.add("hidden");
+
+    document.getElementById("mainContent").classList.remove("hidden");
+
+    music.play().then(() => {
+        playing = true;
+        musicButton.textContent = "🎵 Musique ON";
+        musicButton.classList.add("playing");
+    }).catch(() => {
+        musicButton.textContent = "🎵 Lancer la musique";
+    });
+
+    createFlowers(15);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+/* PARDON */
+
+function forgive() {
+
+    document.getElementById("surprise").classList.remove("hidden");
+
+    createFlowers(35);
+
+    document.getElementById("surprise").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+function needTime() {
+
+    alert(
+        "Je comprends, Manuella. Prends le temps dont tu as besoin. Je respecterai ton rythme. ❤️"
+    );
+
+}
+
+/* ANIMATIONS */
+
+function createFlowers(number) {
+
+    for (let i = 0; i < number; i++) {
+
+        const flower = document.createElement("div");
+
+        flower.className = "floating";
+
+        const items = ["❤️","🌹","💕","🌸","💗"];
+
+        flower.textContent =
+            items[Math.floor(Math.random() * items.length)];
+
+        flower.style.left = Math.random() * 100 + "vw";
+
+        flower.style.fontSize =
+            (15 + Math.random() * 25) + "px";
+
+        flower.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+
+        document.body.appendChild(flower);
+
+        setTimeout(() => flower.remove(), 12000);
+
+    }
+
+}
+
+setInterval(() => createFlowers(2), 1800);
+
+/* DATE AUTOMATIQUE */
+
+const dateInput = document.getElementById("date");
+
+function getLocalDate() {
+
+    const now = new Date();
+
+    const year = now.getFullYear();
+
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+
+    const day = String(now.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+
+}
+
+dateInput.value = getLocalDate();
+dateInput.min = getLocalDate();
+
+/* ENVOI DU FORMULAIRE */
+
+const form = document.getElementById("dateForm");
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const button = document.getElementById("submitButton");
+
+    button.disabled = true;
+
+    button.textContent = "Envoi en cours...";
+
+    document.getElementById("formError").classList.add("hidden");
+
+    try {
+
+        const response = await fetch(form.action, {
+
+            method: "POST",
+
+            body: new FormData(form),
+
+            headers: {
+                "Accept": "application/json"
+            }
+
+        });
+
+        if (response.ok) {
+
+            form.classList.add("hidden");
+
+            document.getElementById("formSuccess")
+                .classList.remove("hidden");
+
+            createFlowers(35);
+
+        } else {
+
+            throw new Error("Erreur Formspree");
+
+        }
+
+    } catch (error) {
+
+        document.getElementById("formError")
+            .classList.remove("hidden");
+
+        button.disabled = false;
+
+        button.textContent = "Réessayer ❤️";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
