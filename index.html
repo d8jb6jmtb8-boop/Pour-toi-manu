@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pour Manuella — Une lettre sincère</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet">
+
+<style>
+
+/* =================================
+   PALETTE ROSE POUDRÉ
+================================= */
+
+:root {
+    --pink: #E7AEB6;
+    --light: #F8DDE1;
+    --coral: #D9787D;
+    --rose: #B9787D;
+    --paper: #FFF9F6;
+    --text: #765158;
+    --gold: #B99A76;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            #F9D7DA 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            #FCE8E8 0%,
+            transparent 40%
+        ),
+        linear-gradient(
+            140deg,
+            #DFA2AB,
+            #F3C5CC,
+            #FCE5E7,
+            #E7AEB6
+        );
+
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* =================================
+   TYPOGRAPHIE
+================================= */
+
+.handwriting {
+    font-family: 'Caveat', cursive;
+}
+
+.signature {
+    font-family: 'Italianno', cursive;
+    font-size: 48px;
+    color: var(--rose);
+}
+
+h1 {
+    font-family: 'Italianno', cursive;
+    font-size: clamp(65px, 13vw, 105px);
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+h2 {
+    font-family: 'Italianno', cursive;
+    font-size: clamp(48px, 9vw, 72px);
+    font-weight: normal;
+    line-height: 1.15;
+}
+
+p {
+    font-size: 25px;
+    line-height: 1.65;
+}
+
+.subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* =================================
+   NAVIGATION ENTRE LES PAGES
+================================= */
+
+.page {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 35px 16px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        visibility .7s;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.content {
+    width: 100%;
+    max-width: 720px;
+
+    margin: auto;
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: rgba(255,249,246,.52);
+
+    border: 1px solid rgba(255,255,255,.85);
+
+    border-radius: 5px;
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 70px rgba(130,65,75,.12),
+        inset 0 0 30px rgba(255,255,255,.25);
+
+    position: relative;
+}
+
+/* DOUBLE BORDURE */
+
+.content::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(185,154,118,.45);
+    pointer-events: none;
+}
+
+/* =================================
+   ORNEMENTS
+================================= */
+
+.ornament {
+    color: var(--gold);
+    font-size: 29px;
+    margin: 20px 0;
+    letter-spacing: 8px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px auto;
+    color: var(--gold);
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    height: 1px;
+    width: 75px;
+    background: var(--gold);
+}
+
+/* =================================
+   BOUTONS
+================================= */
+
+button {
+    font-family: 'Caveat', cursive;
+    cursor: pointer;
+    border: none;
+}
+
+.btn {
+    padding: 13px 32px;
+    margin: 9px;
+
+    border-radius: 40px;
+
+    background: linear-gradient(
+        135deg,
+        #D9787D,
+        #E9A8AF
+    );
+
+    color: white;
+
+    font-size: 28px;
+
+    box-shadow: 0 8px 25px rgba(169,85,95,.18);
+
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-light {
+    background: rgba(255,255,255,.65);
+    color: var(--rose);
+    border: 1px solid white;
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* =================================
+   ENVELOPPE
+================================= */
+
+.envelope {
+    font-size: 90px;
+    margin: 30px;
+    cursor: pointer;
+    animation: pulse 2.5s infinite;
+}
+
+/* =================================
+   LETTRE STYLE MARIAGE
+================================= */
+
+.wedding-letter {
+    background:
+        linear-gradient(
+            135deg,
+            #FFFDF9,
+            #FFF7F1,
+            #FFFDF9
+        );
+
+    border: 1px solid #D8C2A7;
+
+    outline: 1px solid rgba(185,154,118,.35);
+    outline-offset: 5px;
+
+    padding: 42px 38px;
+
+    margin: 25px 5px;
+
+    box-shadow:
+        0 12px 35px rgba(100,65,50,.09);
+
+    text-align: left;
+}
+
+.letter-top {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.letter-top span {
+    font-family: 'Italianno', cursive;
+    font-size: 38px;
+    color: var(--rose);
+}
+
+.letter-body {
+    font-family: 'Caveat', cursive;
+    font-size: 29px;
+    line-height: 1.65;
+    font-weight: 500;
+    color: #705057;
+}
+
+.letter-body p {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-bottom: 21px;
+}
+
+.letter-body .signature {
+    text-align: right;
+    margin-top: 30px;
+}
+
+/* =================================
+   MUSIQUE
+================================= */
+
+.music-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+
+    background: rgba(255,255,255,.75);
+    border: 1px solid white;
+
+    color: var(--rose);
+
+    padding: 10px 19px;
+    border-radius: 30px;
+
+    font-size: 22px;
+    backdrop-filter: blur(10px);
+}
+
+/* =================================
+   FORMULAIRE
+================================= */
+
+.form-card {
+    background: rgba(255,249,246,.65);
+    border: 1px solid white;
+    padding: 30px 25px;
+    margin-top: 25px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    margin: 22px 0 9px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+
+    border: 1px solid rgba(185,105,115,.25);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.9);
+
+    color: var(--text);
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+
+    outline: none;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit {
+    width: 100%;
+    margin-top: 28px;
+}
+
+.note {
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* =================================
+   PETALES
+================================= */
+
+.petal {
+    position: fixed;
+    top: -40px;
+    z-index: 5;
+    pointer-events: none;
+
+    animation: falling linear forwards;
+}
+
+@keyframes falling {
+    to {
+        transform: translateY(110vh) rotate(400deg);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media(max-width: 550px) {
+
+    .page {
+        padding: 55px 12px 25px;
+    }
+
+    .content {
+        padding: 35px 20px;
+    }
+
+    .wedding-letter {
+        padding: 30px 22px;
+    }
+
+    .letter-body {
+        font-size: 27px;
+    }
+
+    .letter-body p {
+        font-size: inherit;
+    }
+
+    p {
+        font-size: 23px;
+    }
+
+    .btn {
+        font-size: 27px;
+    }
+
+    .content::before {
+        inset: 7px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSIQUE -->
+
+<audio id="music" loop preload="auto">
+    <source src="musique.mp3.m4a" type="audio/mp4">
+</audio>
+
+<button class="music-button" id="musicBtn"
+onclick="toggleMusic()">
+    ♫ Musique
+</button>
+
+
+<!-- =================================
+PAGE 1 : ACCUEIL
+================================= -->
+
+<div class="page active" id="page1">
+
+<div class="content">
+
+    <p class="subtitle">
+        UNE LETTRE PERSONNELLE
+    </p>
+
+    <div class="ornament">❧</div>
+
+    <h1>Manuella</h1>
+
+    <div class="divider">✦</div>
+
+    <p class="handwriting">
+        Il y a des mots que l'on aurait dû dire autrement...
+    </p>
+
+    <div class="ornament">❦</div>
+
+    <p>
+        Avant de tourner la page, j'aimerais que tu prennes
+        quelques instants pour découvrir ce que j'ai sur le cœur.
+    </p>
+
+    <div class="envelope" onclick="startExperience()">
+        ✉
+    </div>
+
+    <button class="btn" onclick="startExperience()">
+        Ouvrir ma lettre
+    </button>
+
+    <p class="note">
+        Écrite avec sincérité, spécialement pour toi.
+    </p>
+
+</div>
+</div>
+
+
+<!-- =================================
+PAGE 2 : LETTRE
+================================= -->
+
+<div class="page" id="page2">
+
+<div class="content">
+
+    <div class="letter-top">
+        <span>Une lettre pour toi</span>
+        <div class="divider">✦</div>
+    </div>
+
+    <h2>Ma chère Manuella...</h2>
+
+    <div class="wedding-letter">
+
+        <div class="letter-top">
+            <span>Avec toute ma sincérité</span>
+        </div>
+
+        <div class="letter-body">
+
+            <p>Ma Manuella,</p>
+
+            <p>
+            Je sais que tu ne méritais pas la façon dont je t'ai parlé.
+            </p>
+
+            <p>
+            Tu voulais simplement mon attention, tu voulais probablement sentir que je m'intéressais à toi et que tu avais ta place auprès de moi.
+            </p>
+
+            <p>
+            Et moi, au lieu de prendre le temps de t'écouter, j'ai choisi de mal te répondre. Je t'ai demandé de dégager, de foutre le camp, et honnêtement, je regrette profondément ces paroles.
+            </p>
+
+            <p>
+            Je ne vais pas chercher d'excuses pour justifier mon comportement. Même si j'étais énervé, cela ne me donnait absolument pas le droit de te manquer de respect.
+            </p>
+
+            <p>
+            Tu n'avais pas besoin de cette réaction de ma part. Tu méritais de l'attention, de la douceur et surtout de la considération.
+            </p>
+
+            <p>
+            Je suis désolé, Manuella.
+            </p>
+
+            <p>
+            Je ne veux pas que mon orgueil gâche quelque chose qui compte pour moi. Je préfère reconnaître mes torts plutôt que de faire semblant de ne rien ressentir.
+            </p>
+
+            <p>
+            J'aimerais vraiment qu'on puisse se voir aujourd'hui, si tu es disponible et si tu en as envie.
+            </p>
+
+            <p>
+            Pas pour nous disputer, pas pour chercher qui a raison ou qui a tort, mais simplement pour discuter tranquillement, t'écouter, te présenter mes excuses en face et essayer d'arranger les choses.
+            </p>
+
+            <p>
+            Je ne te demande pas d'oublier instantanément ce qui s'est passé.
+            </p>
+
+            <p>
+            Je te demande simplement de me laisser l'occasion de te montrer que je regrette.
+            </p>
+
+            <p>
+            Pardon Manuella.
+            </p>
+
+            <div class="signature">
+                Avec sincérité...
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="navigation">
+
+        <button class="btn" onclick="goTo(3)">
+            Continuer
+        </button>
+
+    </div>
+
+</div>
+</div>
+
+
+<!-- =================================
+PAGE 3 : PARDON
+================================= -->
+
+<div class="page" id="page3">
+
+<div class="content">
+
+    <div class="ornament">❧</div>
+
+    <h2>Un petit mot de toi...</h2>
+
+    <div class="divider">✦</div>
+
+    <p>
+        Je ne sais pas exactement comment tu te sens
+        après tout cela.
+
+        Mais j'aimerais savoir ce que tu ressens
+        et ce que tu as envie de me dire.
+    </p>
+
+    <div class="navigation">
+
+        <button class="btn" onclick="forgive()">
+            Je te pardonne
+        </button>
+
+        <button class="btn btn-light" onclick="needTime()">
+            J'ai besoin de temps
+        </button>
+
+    </div>
+
+    <div id="forgiveMessage" class="hidden">
+
+        <div class="ornament">❦</div>
+
+        <h2>Merci, Manuella...</h2>
+
+        <p>
+            Je ne prendrai pas tes sentiments à la légère.
+            Je veux te montrer mes efforts, pas seulement te les promettre.
+        </p>
+
+    </div>
+
+    <div class="navigation">
+
+        <button class="btn btn-light" onclick="goTo(4)">
+            Continuer
+        </button>
+
+    </div>
+
+</div>
+</div>
+
+
+<!-- =================================
+PAGE 4 : INVITATION
+================================= -->
+
+<div class="page" id="page4">
+
+<div class="content">
+
+    <p class="subtitle">
+        UNE PROPOSITION QUI ME TIENT À CŒUR
+    </p>
+
+    <div class="ornament">❧</div>
+
+    <h2>Un moment ensemble...</h2>
+
+    <div class="divider">✦</div>
+
+    <p>
+        Il y a des conversations qui méritent mieux
+        qu'un écran et des mots envoyés à distance.
+    </p>
+
+    <br>
+
+    <p>
+        J'aimerais retrouver ta présence,
+        entendre ta voix et surtout prendre le temps
+        de t'écouter comme j'aurais dû le faire.
+    </p>
+
+    <br>
+
+    <p>
+        J'aimerais que nous puissions nous retrouver
+        aujourd'hui, chez moi, dans un cadre tranquille,
+        pour discuter et essayer d'arranger les choses.
+    </p>
+
+    <br>
+
+    <p>
+        Ce moment compte pour moi.
+        J'espère sincèrement que tu pourras être disponible.
+    </p>
+
+    <div class="divider">✦</div>
+
+    <h2>Est-ce que tu peux venir ?</h2>
+
+    <p class="handwriting">
+        Aujourd'hui, chez moi. J'aimerais vraiment te voir.
+    </p>
+
+    <div class="navigation">
+
+        <button class="btn" onclick="goTo(5)">
+            Répondre à mon invitation
+        </button>
+
+    </div>
+
+    <p class="note">
+        J'aimerais beaucoup que nous puissions nous retrouver.
+    </p>
+
+</div>
+</div>
+
+
+<!-- =================================
+PAGE 5 : FORMULAIRE
+================================= -->
+
+<div class="page" id="page5">
+
+<div class="content">
+
+    <p class="subtitle">
+        NOTRE RENDEZ-VOUS
+    </p>
+
+    <div class="ornament">❧</div>
+
+    <h2>Quelques petits détails...</h2>
+
+    <div class="divider">✦</div>
+
+    <p>
+        J'aimerais savoir si tu pourras être là
+        et à quel moment tu serais disponible.
+    </p>
+
+    <div class="form-card">
+
+        <form
+            id="dateForm"
+            action="https://formspree.io/f/xpqvkbyb"
+            method="POST"
+        >
+
+            <input type="hidden"
+            name="_subject"
+            value="Réponse de Manuella - Rendez-vous">
+
+            <input type="hidden"
+            name="date_rendez_vous"
+            id="date">
+
+            <input type="hidden"
+            name="lieu"
+            value="Chez Brams">
+
+            <label>Ton prénom</label>
+
+            <input
+                type="text"
+                name="prenom"
+                value="Manuella"
+                required
+            >
+
+            <label>
+                Pourrais-tu venir chez moi aujourd'hui ?
+            </label>
+
+            <select name="disponibilite" required>
+
+                <option value="">
+                    Choisis ta réponse
+                </option>
+
+                <option value="Oui, je peux venir aujourd'hui">
+                    Oui, je serai là.
+                </option>
+
+                <option value="Je serai disponible plus tard">
+                    Oui, mais un peu plus tard.
+                </option>
+
+                <option value="Je ne suis pas disponible aujourd'hui">
+                    Je ne pourrai malheureusement pas aujourd'hui.
+                </option>
+
+            </select>
+
+            <label>
+                Vers quelle heure pourrais-tu être disponible ?
+            </label>
+
+            <input
+                type="time"
+                name="heure"
+            >
+
+            <label>
+                As-tu quelque chose à me dire avant qu'on se voie ?
+            </label>
+
+            <textarea
+                name="message"
+                placeholder="Je t'écoute, Manuella..."
+            ></textarea>
+
+            <button
+                type="submit"
+                class="btn submit"
+                id="submitButton"
+            >
+                Envoyer ma réponse
+            </button>
+
+        </form>
+
+        <div id="success" class="hidden">
+
+            <div class="ornament">❦</div>
+
+            <h2>Merci Manuella...</h2>
+
+            <p>
+                J'ai bien reçu ta réponse.
+                Merci d'avoir pris le temps de me répondre.
+            </p>
+
+        </div>
+
+        <div id="error" class="hidden">
+
+            <p>
+                Une erreur est survenue.
+                Merci de réessayer.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="navigation">
+
+        <button class="btn btn-light" onclick="goTo(4)">
+            Retour
+        </button>
+
+    </div>
+
+</div>
+</div>
+
+
+<!-- =================================
+PAGE 6 : FIN
+================================= -->
+
+<div class="page" id="page6">
+
+<div class="content">
+
+    <div class="ornament">❧</div>
+
+    <h1>Manuella</h1>
+
+    <div class="divider">✦</div>
+
+    <p>
+        Peu importe ta réponse,
+        je voulais que tu saches que je regrette
+        sincèrement la manière dont je t'ai parlé.
+    </p>
+
+    <br>
+
+    <p>
+        Tu mérites d'être écoutée,
+        respectée et considérée.
+    </p>
+
+    <br>
+
+    <h2>Prends soin de toi.</h2>
+
+    <div class="signature">
+        Avec sincérité...
+    </div>
+
+</div>
+</div>
+
+
+<script>
+
+/* =================================
+   NAVIGATION
+================================= */
+
+function goTo(number) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const destination = document.getElementById("page" + number);
+
+    destination.classList.add("active");
+
+    destination.scrollTop = 0;
+
+}
+
+
+/* =================================
+   MUSIQUE
+================================= */
+
+const music = document.getElementById("music");
+
+const musicBtn = document.getElementById("musicBtn");
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play().then(() => {
+
+            musicBtn.textContent = "♫ Musique ON";
+
+        }).catch(() => {
+
+            musicBtn.textContent = "♫ Réessayer";
+
+        });
+
+    } else {
+
+        music.pause();
+
+        musicBtn.textContent = "♫ Musique";
+
+    }
+
+}
+
+
+/* =================================
+   OUVERTURE
+================================= */
+
+function startExperience() {
+
+    music.play().catch(() => {
+
+        musicBtn.textContent = "♫ Activer la musique";
+
+    });
+
+    goTo(2);
+
+    petals(12);
+
+}
+
+
+/* =================================
+   PARDON
+================================= */
+
+function forgive() {
+
+    document.getElementById("forgiveMessage")
+        .classList.remove("hidden");
+
+    petals(25);
+
+}
+
+function needTime() {
+
+    alert(
+        "Je comprends, Manuella. Prends le temps dont tu as besoin. Je respecterai ton rythme."
+    );
+
+}
+
+
+/* =================================
+   PÉTALES
+================================= */
+
+function petals(number) {
+
+    const flowers = ["🌸","🌷","🌺"];
+
+    for (let i = 0; i < number; i++) {
+
+        const petal = document.createElement("div");
+
+        petal.className = "petal";
+
+        petal.textContent =
+            flowers[Math.floor(Math.random() * flowers.length)];
+
+        petal.style.left = Math.random() * 100 + "vw";
+
+        petal.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+
+        petal.style.fontSize =
+            (14 + Math.random() * 18) + "px";
+
+        document.body.appendChild(petal);
+
+        setTimeout(() => petal.remove(), 12000);
+
+    }
+
+}
+
+setInterval(() => petals(1), 4000);
+
+
+/* =================================
+   DATE DU JOUR
+================================= */
+
+function getLocalDate() {
+
+    const now = new Date();
+
+    const year = now.getFullYear();
+
+    const month = String(now.getMonth() + 1).padStart(2,"0");
+
+    const day = String(now.getDate()).padStart(2,"0");
+
+    return `${year}-${month}-${day}`;
+
+}
+
+document.getElementById("date").value = getLocalDate();
+
+
+/* =================================
+   FORMSPREE
+================================= */
+
+const form = document.getElementById("dateForm");
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const button = document.getElementById("submitButton");
+
+    button.disabled = true;
+
+    button.textContent = "Envoi en cours...";
+
+    document.getElementById("error").classList.add("hidden");
+
+    try {
+
+        const response = await fetch(form.action, {
+
+            method: "POST",
+
+            body: new FormData(form),
+
+            headers: {
+                "Accept": "application/json"
+            }
+
+        });
+
+        if (!response.ok) {
+
+            throw new Error("Erreur Formspree");
+
+        }
+
+        form.classList.add("hidden");
+
+        document.getElementById("success")
+            .classList.remove("hidden");
+
+        petals(30);
+
+    } catch(error) {
+
+        document.getElementById("error")
+            .classList.remove("hidden");
+
+        button.disabled = false;
+
+        button.textContent = "Réessayer";
+
+    }
+
+});
+
+
+/* =================================
+   MUSIQUE AU CHARGEMENT
+================================= */
+
+window.addEventListener("load", () => {
+
+    music.play().then(() => {
+
+        musicBtn.textContent = "♫ Musique ON";
+
+    }).catch(() => {
+
+        musicBtn.textContent = "♫ Activer la musique";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
